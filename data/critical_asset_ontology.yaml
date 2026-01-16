@@ -1,0 +1,20 @@
+# Ontology of Critical US Manufacturing Assets
+# Used by Scout Agent for NLP Pattern Matching
+
+semiconductor_assets:
+  - name: "Ultra-High Vacuum Chamber"
+    keywords: ["UHV Chamber", "Electron Microscope", "Lithography"]
+    lead_time_months: 8
+    risk_factor: "High"
+
+defense_assets:
+  - name: "Traveling Wave Tube (TWT)"
+    keywords: ["TWT Amplifier", "Jamming Pod", "Electronic Warfare", "Missile Seeker"]
+    lead_time_months: 12
+    risk_factor: "Critical"
+
+food_safety_assets:
+  - name: "InGaAs Sensor"
+    keywords: ["Hyperspectral", "Optical Sorter", "Mycotoxin Detection"]
+    lead_time_months: 4
+    risk_factor: "Medium"

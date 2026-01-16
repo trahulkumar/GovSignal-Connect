@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "GovSignal Procurement Trigger",
+    "description": "Standard payload for injecting federal demand signals into SAP IDoc or Oracle REST endpoints.",
+    "properties": {
+        "signal_id": {
+            "type": "string"
+        },
+        "detected_asset": {
+            "type": "string",
+            "enum": [
+                "TWT_Amplifier",
+                "Vacuum_Chamber_UHV",
+                "InGaAs_Sensor"
+            ]
+        },
+        "federal_source": {
+            "type": "string",
+            "enum": [
+                "SAM_GOV",
+                "FEDERAL_REGISTER",
+                "CHIPS_ACT"
+            ]
+        },
+        "confidence_score": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+        },
+        "erp_action_code": {
+            "type": "string",
+            "enum": [
+                "RELEASE_CAPITAL_HOLD",
+                "INCREASE_SAFETY_STOCK",
+                "FLAG_FOR_REVIEW"
+            ]
+        }
+    }
+}
