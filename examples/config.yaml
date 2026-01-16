@@ -1,0 +1,16 @@
+surveillance_targets:
+  Semiconductors:
+    related_asset: "High-Vacuum Chamber"
+    keywords:
+      - "Nanofabrication"
+      - "CHIPS Act"
+      - "Lithography"
+      - "Wafer"
+  
+  Defense_Systems:
+    related_asset: "TWT Amplifiers"
+    keywords:
+      - "Electronic Warfare"
+      - "Jamming Pods"
+      - "Microwave"
+      - "Countermeasures"
