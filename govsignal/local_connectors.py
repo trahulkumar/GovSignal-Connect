@@ -204,3 +204,17 @@ class PortAuthorityNYNJConnector:
             "description": "Pilot program for AI-driven container logistics at Port Newark.",
             "url": "https://www.panynj.gov/port-authority/en/business-opportunities.html"
         }]
+
+class GeorgiaEconomicDevConnector:
+    """
+    Mock connector for Georgia Dept of Economic Development.
+    Target: EV/Battery Manufacturing.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying Georgia Economic Dev")
+        return [{
+            "source": "Georgia Eco Dev",
+            "title": "E-Mobility Innovation Grant",
+            "description": "Tax abatements for lithium-ion battery recycling facilities.",
+            "url": "https://www.georgia.org/industries/automotive"
+        }]
