@@ -14,3 +14,5 @@ Connecting to 20+ sources requires robust secret management.
 2.  Public key is committed to `certs/known_hosts`.
 3.  Private key is imported directly to Vault.
 4.  Offline machine is wiped.
+
+<!-- Refined by GovSignal Automation -->
