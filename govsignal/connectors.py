@@ -1,3 +1,7 @@
+"""
+GovSignal Connectors Module
+Mocks external government APIs (SAM.gov, Federal Register) for the research prototype.
+"""
 import logging
 
 logger = logging.getLogger(__name__)
