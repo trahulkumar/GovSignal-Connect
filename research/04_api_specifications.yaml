@@ -48,3 +48,5 @@ components:
         timestamp:
           type: string
           format: date-time
+
+# Refined by GovSignal Automation
