@@ -92,3 +92,17 @@ class MassLifeSciencesConnector:
             "description": "CapEx grants for GMP facility expansion in Worcester/Cambridge.",
             "url": "https://www.masslifesciences.com/"
         }]
+
+class FloridaDefenseConnector:
+    """
+    Mock connector for Florida Defense Support Task Force.
+    Target: Aerospace & Simulation.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying Florida Defense TF")
+        return [{
+            "source": "Florida Defense TF",
+            "title": "Simulation & Training Modernization Grant",
+            "description": "Funding for Orlando-based MS&T (Modeling, Simulation & Training) companies.",
+            "url": "https://www.enterpriseflorida.com/fdstf/"
+        }]
