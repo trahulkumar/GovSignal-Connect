@@ -14,3 +14,5 @@
 
 ## 3. Results
 In simulated trials, GovSignal detected a "Silicon Heartland" grant opportunity 36 hours before the manual control group, enabling a competitive first-mover advantage.
+
+<!-- Refined by GovSignal Automation -->
