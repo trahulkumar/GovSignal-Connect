@@ -218,3 +218,17 @@ class GeorgiaEconomicDevConnector:
             "description": "Tax abatements for lithium-ion battery recycling facilities.",
             "url": "https://www.georgia.org/industries/automotive"
         }]
+
+class MichiganEconomicDevConnector:
+    """
+    Mock connector for Michigan Economic Development Corp.
+    Target: Defense/Auto Supply Chain.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying Michigan MEDC")
+        return [{
+            "source": "Michigan MEDC",
+            "title": "Defense Center of Excellence Grant",
+            "description": "Funding for dual-use automotive technologies applicable to military vehicles.",
+            "url": "https://www.michiganbusiness.org/"
+        }]
