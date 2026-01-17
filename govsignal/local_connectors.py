@@ -148,3 +148,17 @@ class CityOfBostonConnector:
             "description": "Availability of city-owned land for BSL-3 lab development.",
             "url": "https://www.boston.gov/departments/procurement"
         }]
+
+class WashingtonCommerceConnector:
+    """
+    Mock connector for Washington State Dept of Commerce.
+    Target: Aerospace (Boeing supply chain).
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying WA Commerce")
+        return [{
+            "source": "WA Commerce",
+            "title": "Aerospace Innovation Cluster Grant",
+            "description": "Funding for composite material research in Everett/Renton.",
+            "url": "https://www.commerce.wa.gov/"
+        }]
