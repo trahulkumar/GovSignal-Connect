@@ -16,3 +16,5 @@ class TestFRConnector(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+# Refined by GovSignal Automation
