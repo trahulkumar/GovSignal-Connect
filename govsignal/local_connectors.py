@@ -260,3 +260,17 @@ class PennCommunityDevConnector:
             "description": "Matching funds for implementing AI-driven robotics in manufacturing.",
             "url": "https://dced.pa.gov/"
         }]
+
+class NationalGovernorsAssocConnector:
+    """
+    Mock connector for National Governors Association.
+    Target: Policy Signals.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying NGA")
+        return [{
+            "source": "NGA",
+            "title": "Supply Chain Resilience Compact",
+            "description": "Multi-state agreement to fast-track permits for critical manufacturing.",
+            "url": "https://www.nga.org/"
+        }]
