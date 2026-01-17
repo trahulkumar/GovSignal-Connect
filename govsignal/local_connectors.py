@@ -232,3 +232,17 @@ class MichiganEconomicDevConnector:
             "description": "Funding for dual-use automotive technologies applicable to military vehicles.",
             "url": "https://www.michiganbusiness.org/"
         }]
+
+class IndianaEconomicDevConnector:
+    """
+    Mock connector for Indiana Economic Development Corp.
+    Target: Micro-electronics.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying Indiana IEDC")
+        return [{
+            "source": "Indiana IEDC",
+            "title": "Microelectronics Innovation Hub",
+            "description": "Funding for packaging and testing facilities near crane naval base.",
+            "url": "https://iedc.in.gov/"
+        }]
