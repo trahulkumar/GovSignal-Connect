@@ -134,3 +134,17 @@ class CityOfAustinConnector:
             "description": "Request for proposals for traffic management AI solutions.",
             "url": "https://www.austintexas.gov/financeonline/finance/index.cfm"
         }]
+
+class CityOfBostonConnector:
+    """
+    Mock connector for City of Boston.
+    Target: Bio-tech/Lab space.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying City of Boston")
+        return [{
+            "source": "City of Boston",
+            "title": "Life Sciences Real Estate RFP",
+            "description": "Availability of city-owned land for BSL-3 lab development.",
+            "url": "https://www.boston.gov/departments/procurement"
+        }]
