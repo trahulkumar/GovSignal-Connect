@@ -14,3 +14,5 @@ The architecture is designed to support Cybersecurity Maturity Model Certificati
 For public companies, automated capital allocation (ERP writes) is a "Material Financial Process".
 - **Validation:** Every algorithm change is version-controlled and peer-reviewed.
 - **Traceability:** Signals link back to original government source URL.
+
+<!-- Refined by GovSignal Automation -->
