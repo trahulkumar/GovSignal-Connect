@@ -16,3 +16,5 @@ class MockScout(ProcurementScout):
 
     def _generate_signal(self, data, category, probability):
         return super()._generate_signal(data, category, probability)
+
+# Refined by GovSignal Automation
