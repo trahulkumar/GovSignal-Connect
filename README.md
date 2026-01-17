@@ -25,22 +25,56 @@ This prototype demonstrates two specific high-value scenarios:
 - **Signal**: The Scout identifies "Jamming Pods" requirements.
 - **Action**: Immediate recommendation to increase stock levels for **TWT (Traveling Wave Tube) Amplifiers**, a critical sub-component for EW systems.
 
-## 3. Architecture
+## 3. System Architecture
+
+GovSignal-Connect operates as a Decentralized Multi-Agent System (MAS). The "Procurement Scout" is the primary external sensor, but it acts in concert with internal agents to execute the full "Smart Overlay" strategy.
+
+### 3.1 System Context Diagram
 
 ```mermaid
-graph LR
-    A[Unstructured Gov Data] -->|SAM.gov / Fed Register| B(Procurement Scout Agent);
-    B -->|NLP & Keyword Logic| C{Signal Normalization};
-    C -->|JSON Signal| D[Legacy ERP System];
-    
-    subgraph "GovSignal-Connect"
-    B
-    C
+graph TD
+    subgraph External_Data [External Data Environment]
+        SAM[SAM.gov]
+        FR[Federal Register]
+        CHIPS[CHIPS.gov Funding Portal]
     end
+
+    subgraph GovSignal [GovSignal-Connect - The Smart Overlay]
+        Scout[The Scout - External Signal]
+        Inventory[Inventory Agent - Stock Analysis]
+        Credit[Credit Agent - Capital Release]
+    end
+
+    subgraph Enterprise [Enterprise Core]
+        ERP[Legacy ERP - SAP S/4HANA / Oracle]
+        SCM[Supply Chain Planning]
+    end
+
+    SAM --> Scout
+    FR --> Scout
+    CHIPS --> Scout
     
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style C fill:#bbf,stroke:#333,stroke-width:2px
+    Scout -- Standardized Demand Signal --> Inventory
+    Inventory -- Stock Low Alert --> Credit
+    Inventory -- Stock Healthy --> Scout
+    
+    Credit -- Authorization Token --> ERP
+    ERP -- Purchase Order Created --> SCM
 ```
+
+### 3.2 Data Flow
+The system follows a strict unidirectional data flow to ensure signal integrity:
+
+1.  **Ingestion (The Scout):** The Scout continuously polls unstructured federal feeds. It filters noise using the `critical_asset_ontology`.
+2.  **Normalization (External Signal):** Raw text is converted into a `Standard Signal` JSON payload. This isolates the legacy ERP from the chaos of unstructured government data.
+3.  **Internal Logic (ERP):** The standardized signal is ingested by the ERP via REST or IDoc interfaces. The ERP handles the "Internal Logic" (e.g., checking specific warehouse bin levels, calculating lead times based on preferred vendors).
+
+### 3.3 Auditability & Compliance
+To meet requirements for **ITAR (International Traffic in Arms Regulations)** and **FDA (Food and Drug Administration)** validations, the system enforces strict audit trails:
+
+-   **Decision Logging:** Every "Demand Probability" score is logged with its timestamp and source snippet.
+-   **Immutable Records:** Actionable signals sent to the ERP (`release_capital_hold`) are hashed and stored to provide a tamper-evident record of *why* automated purchasing decisions were made.
+-   **Human-in-the-Loop:** For signals with a confidence score between 0.5 and 0.8 (`flag_for_review`), the Credit Agent requires a human digital signature before releasing funds.
 
 ## 4. Technical Implementation
 
