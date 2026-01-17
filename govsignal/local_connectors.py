@@ -246,3 +246,17 @@ class IndianaEconomicDevConnector:
             "description": "Funding for packaging and testing facilities near crane naval base.",
             "url": "https://iedc.in.gov/"
         }]
+
+class PennCommunityDevConnector:
+    """
+    Mock connector for Pennsylvania DCED.
+    Target: Robotics & AI.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying PA DCED")
+        return [{
+            "source": "PA DCED",
+            "title": "Robotics Technology Deployment Grant",
+            "description": "Matching funds for implementing AI-driven robotics in manufacturing.",
+            "url": "https://dced.pa.gov/"
+        }]
