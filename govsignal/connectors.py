@@ -4,6 +4,9 @@ Mocks external government APIs (SAM.gov, Federal Register) for the research prot
 """
 import logging
 
+# Type Alias for connector responses
+ConnectorResponse = list[dict]
+
 logger = logging.getLogger(__name__)
 
 class SamGovConnector:
