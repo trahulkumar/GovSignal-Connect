@@ -166,13 +166,34 @@ class ProcurementScout:
 
             # Analyze Federal Register data
             for item in fr_documents:
-                # Similarly, check for semiconductor match
                 abstract_lower = item.get('abstract', '').lower()
+                # Basic domain filter for prototype
                 if category == "Semiconductors" and "nanofabrication" in abstract_lower:
                     item['source_name'] = "Federal Register"
                     prob = self._calculate_probability(item['abstract'], keywords)
                     signal = self._generate_signal(item, category, prob)
                     all_signals.append(signal)
+
+            # Analyze Local Sources
+            for connector in self.active_local_connectors:
+                try:
+                    # Mock connectors take keywords and return relevant mocks
+                    local_opps = connector.get_opportunities(keywords)
+                    for item in local_opps:
+                        # Normalize text for scoring
+                        text_content = f"{item.get('title', '')} {item.get('description', '')}"
+                        prob = self._calculate_probability(text_content, keywords)
+                        
+                        # Only generate signal if probability is relevant (e.g. > 0.1)
+                        if prob > 0.1:
+                            # Ensure source_name is set
+                            if 'source' in item and 'source_name' not in item:
+                                item['source_name'] = item['source']
+                            
+                            signal = self._generate_signal(item, category, prob)
+                            all_signals.append(signal)
+                except Exception as e:
+                    logger.error(f"Error querying local source {connector}: {e}")
 
         # Output results
         print(json.dumps(all_signals, indent=2))
