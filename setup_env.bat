@@ -1,4 +1,5 @@
 @echo off
+REM Requires Python 3.10+
 echo [INFO] Setting up GovSignal-Connect Environment...
 
 REM Check if uv is installed
