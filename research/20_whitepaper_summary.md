@@ -7,7 +7,7 @@
 US critical infrastructure supply chains are vulnerable to "demand shocks" driven by government policy changes that remain hidden in unstructured text until it is too late.
 
 ## The Solution
-GovSignal-Connect is an autonomous AI agent that:
+GovSignal-Connect is an automated surveillance system that:
 1.  **Monitors** 20+ Federal and State data sources.
 2.  **Scores** procurement notices for relevance to specific asset classes (e.g., semiconductors).
 3.  **Signals** ERP systems to release capital automatically.

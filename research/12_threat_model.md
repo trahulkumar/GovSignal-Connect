@@ -6,9 +6,9 @@
 - **Source Reputation Scoring:** Signals from .gov/.mil domains have higher trust than others.
 - **Cross-Verification:** A signal requires corroboration from at least two independent sources before triggering `release_capital_hold`.
 
-## 2. Prompt Injection (Future LLM Phase)
-**Threat:** Malicious text in a PDF abstract tricks the LLM into ignoring safety protocols.
-**Mitigation:** Strict input sanitization and "Constitutional AI" guardrails.
+## 2. Input Manipulation (Future Semantic Phase)
+**Threat:** Malicious text in a PDF abstract tricks the semantic analysis engine into ignoring safety protocols.
+**Mitigation:** Strict input sanitization and deterministic guardrails.
 
 ## 3. Denial of Service (DoS)
 **Threat:** Flooding the system with noise to hide a real signal.

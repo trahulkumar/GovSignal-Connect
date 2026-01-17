@@ -14,6 +14,6 @@ Where:
 - $\mathbb{I}(condition)$ is an indicator function (1 if true, 0 if false).
 
 ## 3. Justification for Deterministic Approach
-While LLMs offer superior semantic understanding, they unfortunately introduce non-determinism. For financial auditability (SOX compliance), the signal generation mechanism must be reproducible. Our KDA approach ensures that identical inputs always yield identical scores, a requirement for automated capital release.
+While generative models offer superior semantic understanding, they unfortunately introduce non-determinism. For financial auditability (SOX compliance), the signal generation mechanism must be reproducible. Our KDA approach ensures that identical inputs always yield identical scores, a requirement for automated capital release.
 
 <!-- Refined by GovSignal Automation -->
