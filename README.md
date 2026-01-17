@@ -82,11 +82,27 @@ In addition to **SAM.gov** and **Federal Register**, the Scout now monitors **20
 - **Municipal & Regional:** Austin, Boston, Huntsville, Port Authority NY/NJ.
 - **Specialized/Non-Profit:** Mass Life Sciences, NC Biotech, Florida Defense Task Force, NGA, CSG, Virginia EDP.
 
-## 4. Technical Implementation
+## 4. Research Specifications & Documentation
+
+This project maintains a rigorous documentation standard to satisfy audit and compliance requirements.
+
+| Category | Document | Description |
+|----------|----------|-------------|
+| **Core** | [Problem Statement](research/01_problem_statement.md) | Academic definition of the inventory lag problem. |
+| **Methods** | [NLP Methodology](research/02_methodology_nlp.md) | Mathematical definition of the KDA scoring algorithm. |
+| **Security** | [Threat Model](research/12_threat_model.md) | Assessment of adversarial risks (poisoning, DoS). |
+| **Compliance** | [Regulatory Framework](research/11_regulatory_compliance.md) | Adherence to NIST SP 800-171 and SOX. |
+| **Integration** | [API Spec (OpenAPI)](research/04_api_specifications.yaml) | Standardized interface for ERP ingestion. |
+| **Roadmap** | [Future Roadmap](research/08_future_roadmap.md) | Planned evolution to Semantic RAG and Autonomous Negotiation. |
+
+> **Note:** Full documentation including [Scalability Reports](research/10_scalability_report.md) and [Audit Processes](research/13_audit_process.md) can be found in the [`research/`](research/) directory.
+
+## 5. Technical Implementation
 
 This repository contains:
-- `govsignal/scout.py`: The core agent implementing the surveillance loop and advanced NLP demand probability scoring.
+- `govsignal/scout.py`: The core agent implementing the surveillance loop and [advanced NLP demand probability scoring](research/02_methodology_nlp.md).
 - `govsignal/connectors.py`: Mock adapters for federal APIs (simulating API responses for demonstration).
+- `tests/`: Comprehensive test suite covering unit logic, 20+ local connectors, and integration cycles.
 - `examples/config.yaml`: Configuration defining the surveillance targets and keyword ontologies.
 
 ### Running the Prototype
