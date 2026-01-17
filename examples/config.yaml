@@ -12,5 +12,29 @@ surveillance_targets:
     keywords:
       - "Electronic Warfare"
       - "Jamming Pods"
-      - "Microwave"
-      - "Countermeasures"
+      - "supply chain"
+      - "semiconductor manufacturing"
+
+# Local Government Sources Configuration
+# Uncomment to enable specific state/local/non-profit monitoring
+enabled_local_sources:
+  - "CA_GO_BIZ"       # California
+  - "TX_TEF"          # Texas
+  - "NY_ESD"          # New York
+  - "AZ_COMMERCE"     # Arizona
+  - "OH_DEV"          # Ohio
+  # - "MASS_LIFE"     # Massachusetts
+  # - "FL_DEFENSE"    # Florida
+  # - "VA_EDP"        # Virginia
+  # - "AUSTIN_CITY"   # Austin
+  # - "BOSTON_CITY"   # Boston
+  # - "WA_COMMERCE"   # Washington
+  # - "HUNTSVILLE_CITY" # Huntsville
+  # - "NC_BIOTECH"    # NC Biotech
+  # - "PA_NYNJ"       # Port Authority
+  # - "GA_ECO_DEV"    # Georgia
+  # - "MI_MEDC"       # Michigan
+  # - "IN_IEDC"       # Indiana
+  # - "PA_DCED"       # Pennsylvania
+  # - "NGA_POLICY"    # NGA
+  # - "CSG_COMPACT"   # CSG
