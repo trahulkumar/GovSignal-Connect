@@ -12,7 +12,7 @@ class SamGovConnector:
     Simulates fetching government contract solicitations.
     """
     def __init__(self):
-        logger.info("Initializing SamGovConnector (Mock Mode)")
+        logger.info("Initializing SamGovConnector (Mock Mode) - Prototype v1.0")
 
     def get_opportunities(self, keywords: list) -> list[dict]:
         """
@@ -22,6 +22,7 @@ class SamGovConnector:
         logger.info(f"Querying SAM.gov with keywords: {keywords}")
         
         # Mock Data 2 (Defense) as per requirements
+        # NOTE: This structure mimics the official SAM.gov API "opportunities" endpoint
         mock_response = [
             {
                 "noticeId": "N00014-24-R-0001",
