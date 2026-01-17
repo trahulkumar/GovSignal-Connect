@@ -79,7 +79,7 @@ To meet requirements for **ITAR (International Traffic in Arms Regulations)** an
 ## 4. Technical Implementation
 
 This repository contains:
-- `govsignal/scout.py`: The core agent implementing the surveillance loop and demand probability scoring.
+- `govsignal/scout.py`: The core agent implementing the surveillance loop and advanced NLP demand probability scoring.
 - `govsignal/connectors.py`: Mock adapters for federal APIs (simulating API responses for demonstration).
 - `examples/config.yaml`: Configuration defining the surveillance targets and keyword ontologies.
 
