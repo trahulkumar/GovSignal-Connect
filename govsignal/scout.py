@@ -17,6 +17,9 @@ class ProcurementScout:
     Implements a keyword-density scoring algorithm to determine 'Demand Probability'.
     """
 
+    MAX_PROBABILITY = 0.95
+    BASE_SCORE = 0.4
+
     def __init__(self, config_path: str):
         self.config = self._load_config(config_path)
         self.sam_connector = SamGovConnector()
@@ -31,7 +34,7 @@ class ProcurementScout:
             with open(path, 'r') as f:
                 return yaml.safe_load(f)
         except Exception as e:
-            logger.error(f"Failed to load config: {e}")
+            logger.error(f"Failed to load config from {path}: {e}")
             raise
 
     def _calculate_probability(self, text: str, target_keywords: list) -> float:
@@ -41,22 +44,26 @@ class ProcurementScout:
         """
         logger.debug(f"Calculating probability for text length: {len(text)}")
         text_lower = text.lower()
-        match_count = 0
-        for kw in target_keywords:
-            if kw.lower() in text_lower:
+        match_count: int = 0
+        for keyword in target_keywords:
+            if keyword.lower() in text_lower:
                 match_count += 1
         
+        logger.debug(f"Found {match_count} keyword matches.")
+        
         # Simple heuristic: more matches = higher probability
-        # Base score 0.4, +0.2 per keyword match, capped at 0.95
+        # Base score BASE_SCORE, +0.2 per keyword match, capped at MAX_PROBABILITY
         if match_count == 0:
             return 0.1
         
-        score = 0.4 + (match_count * 0.2)
-        return min(score, 0.95)
+        score = self.BASE_SCORE + (match_count * 0.2)
+        final_score = min(score, self.MAX_PROBABILITY)
+        return min(final_score, 1.0) # Safety check
 
     def _generate_signal(self, source_data: dict, target_category: str, probability: float) -> dict:
         """
         Generates the standardized JSON signal for ERP ingestion.
+        Maps probability scores to concrete actions (e.g., release_capital_hold).
         """
         # Determine specific asset and action based on the target category
         # In a real system, this would be a more complex mapping or AI inference
