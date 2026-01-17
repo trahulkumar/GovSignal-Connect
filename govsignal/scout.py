@@ -39,6 +39,7 @@ class ProcurementScout:
         Simulates NLP demand probability scoring based on keyword density and presence.
         Returns a float between 0.0 and 1.0.
         """
+        logger.debug(f"Calculating probability for text length: {len(text)}")
         text_lower = text.lower()
         match_count = 0
         for kw in target_keywords:
