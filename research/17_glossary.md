@@ -9,3 +9,5 @@
 | **Capital Hold** | A financial reserve placed on inventory that cannot be shipped due to missing components. |
 | **NIW** | National Interest Waiver. |
 | **CUI** | Controlled Unclassified Information. |
+
+<!-- Refined by GovSignal Automation -->
