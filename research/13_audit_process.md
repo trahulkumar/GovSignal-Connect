@@ -16,3 +16,5 @@ This document defines the procedure for auditing the autonomous decisions made b
 ## 4. Quarterly Model Review
 - **Role:** Data Scientist
 - **Action:** Assess if keywords need updating based on new terminology (e.g., "AI PC" vs "Laptop").
+
+<!-- Refined by GovSignal Automation -->
