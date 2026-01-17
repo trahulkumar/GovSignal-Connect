@@ -43,7 +43,7 @@ class FederalRegisterConnector:
     Simulates fetching government notices and funding opportunities.
     """
     def __init__(self):
-        logger.info("Initializing FederalRegisterConnector (Mock Mode)")
+        logger.info("Initializing FederalRegisterConnector (Mock Mode) - Prototype v1.0")
 
     def get_documents(self, keywords: list) -> list[dict]:
         """
