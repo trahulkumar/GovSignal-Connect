@@ -3,8 +3,37 @@
     "title": "GovSignal Procurement Trigger",
     "description": "Standard payload for injecting federal demand signals into SAP IDoc or Oracle REST endpoints.",
     "properties": {
+        "_comment": {
+            "type": "string",
+            "const": "Maps to SAP BAPI_PO_CREATE1 interface for Z-code authorization."
+        },
         "signal_id": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique UUID for idempotency in SAP middleware."
+        },
+        "sap_bapi_transaction_code": {
+            "type": "string",
+            "enum": [
+                "RELEASE_BLOCK_Z1",
+                "UPDATE_SS_Z2",
+                "BLOCK_REVIEW_Z3"
+            ],
+            "description": "Custom Z-transaction codes for automated capital release."
+        },
+        "sap_doc_type": {
+            "type": "string",
+            "const": "NB",
+            "description": "SAP BSART (Document Type) - Standard PO"
+        },
+        "sap_purch_org": {
+            "type": "string",
+            "const": "1000",
+            "description": "SAP EKORG (Purchasing Organization)"
+        },
+        "sap_company_code": {
+            "type": "string",
+            "const": "1000",
+            "description": "SAP BUKRS (Company Code)"
         },
         "detected_asset": {
             "type": "string",
@@ -26,14 +55,6 @@
             "type": "number",
             "minimum": 0.0,
             "maximum": 1.0
-        },
-        "erp_action_code": {
-            "type": "string",
-            "enum": [
-                "RELEASE_CAPITAL_HOLD",
-                "INCREASE_SAFETY_STOCK",
-                "FLAG_FOR_REVIEW"
-            ]
         }
     }
 }
