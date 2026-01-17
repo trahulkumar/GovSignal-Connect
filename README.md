@@ -76,6 +76,12 @@ To meet requirements for **ITAR (International Traffic in Arms Regulations)** an
 -   **Immutable Records:** Actionable signals sent to the ERP (`release_capital_hold`) are hashed and stored to provide a tamper-evident record of *why* automated purchasing decisions were made.
 -   **Human-in-the-Loop:** For signals with a confidence score between 0.5 and 0.8 (`flag_for_review`), the Credit Agent requires a human digital signature before releasing funds.
 
+### 3.4 Source Coverage (New!)
+In addition to **SAM.gov** and **Federal Register**, the Scout now monitors **20+ State & Local** sources for deeper supply chain signals:
+- **State Economic Development:** CA (GO-Biz), TX (TEF), NY (ESD), AZ (ACA), OH (Development), GA, MI, IN, PA, WA.
+- **Municipal & Regional:** Austin, Boston, Huntsville, Port Authority NY/NJ.
+- **Specialized/Non-Profit:** Mass Life Sciences, NC Biotech, Florida Defense Task Force, NGA, CSG, Virginia EDP.
+
 ## 4. Technical Implementation
 
 This repository contains:
