@@ -64,3 +64,31 @@ class ArizonaCommerceConnector:
             "description": "State-level incentives for water recycling systems in semiconductor fabs.",
             "url": "https://www.azcommerce.com/"
         }]
+
+class OhioDevelopmentConnector:
+    """
+    Mock connector for Ohio Department of Development.
+    Target: Intel/Silicon Heartland.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying Ohio Development")
+        return [{
+            "source": "Ohio Development",
+            "title": "Silicon Heartland User Grant",
+            "description": "Logistics support for suppliers establishing presence near New Albany Intel site.",
+            "url": "https://development.ohio.gov/"
+        }]
+
+class MassLifeSciencesConnector:
+    """
+    Mock connector for Massachusetts Life Sciences Center.
+    Target: Bio-Pharma manufacturing.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying Mass Life Sciences")
+        return [{
+            "source": "Mass Life Sciences",
+            "title": "Biomanufacturing Capital Program",
+            "description": "CapEx grants for GMP facility expansion in Worcester/Cambridge.",
+            "url": "https://www.masslifesciences.com/"
+        }]
