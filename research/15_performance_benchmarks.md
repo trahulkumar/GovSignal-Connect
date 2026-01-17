@@ -15,3 +15,5 @@
 
 ## 4. Conclusion
 The system is CPU-bound only during heavy re-indexing. I/O is the primary bottleneck.
+
+<!-- Refined by GovSignal Automation -->
