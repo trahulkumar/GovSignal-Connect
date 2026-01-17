@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: GovSignal Scout API
+  version: 1.0.0
+  description: Internal API for inter-agent communication and ERP ingestion.
+
+paths:
+  /signals:
+    get:
+      summary: Retrieve generated procurement signals
+      responses:
+        '200':
+          description: List of active signals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Signal'
+
+components:
+  schemas:
+    Signal:
+      type: object
+      properties:
+        signal_id:
+          type: string
+          format: uuid
+        target_category:
+          type: string
+          example: "Semiconductors"
+        source:
+          type: string
+          example: "SAM.gov"
+        title:
+          type: string
+        url:
+          type: string
+          format: uri
+        demand_probability:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+        erp_action_recommendation:
+          type: string
+          enum: [monitor, flag_for_review, release_capital_hold]
+        timestamp:
+          type: string
+          format: date-time
