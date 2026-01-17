@@ -18,3 +18,5 @@ python tests/run_all.py
 - `test_sam_connector.py` / `test_fr_connector.py`: Tests for federal sources.
 - `test_local_*.py`: Tests for state/local connectors by region.
 - `test_integration.py`: Runs a full simulated cycle.
+
+<!-- Refined by GovSignal Automation -->
