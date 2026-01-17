@@ -10,3 +10,5 @@
 
 ## 3. False Positives
 - **Keyword Ambiguity:** "Chip" can mean wood chips or silicon chips. Domain-specific filtering is currently rudimentary.
+
+<!-- Refined by GovSignal Automation -->
