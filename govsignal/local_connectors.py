@@ -190,3 +190,17 @@ class NorthCarolinaBiotechConnector:
             "description": "Commercialization funding for university-spinout gene therapies.",
             "url": "https://www.ncbiotech.org/funding"
         }]
+
+class PortAuthorityNYNJConnector:
+    """
+    Mock connector for Port Authority of NY & NJ.
+    Target: Logistics/Supply Chain.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying Port Authority NYNJ")
+        return [{
+            "source": "PA NYNJ",
+            "title": "Autonomous Cargo Handling RFP",
+            "description": "Pilot program for AI-driven container logistics at Port Newark.",
+            "url": "https://www.panynj.gov/port-authority/en/business-opportunities.html"
+        }]
