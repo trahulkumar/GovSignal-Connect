@@ -274,3 +274,17 @@ class NationalGovernorsAssocConnector:
             "description": "Multi-state agreement to fast-track permits for critical manufacturing.",
             "url": "https://www.nga.org/"
         }]
+
+class CouncilStateGovernmentsConnector:
+    """
+    Mock connector for Council of State Governments.
+    Target: Interstate Compacts.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying CSG")
+        return [{
+            "source": "CSG",
+            "title": "Interstate Workforce Compact",
+            "description": "Reciprocity agreement for licensing skilled trades in defense manufacturing.",
+            "url": "https://csg.org/"
+        }]
