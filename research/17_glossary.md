@@ -7,7 +7,6 @@
 | **Connector** | A software module responsible for interfacing with a specific external data source. |
 | **Demand Probability** | A computed float [0.1-1.0] indicating the likelihood a document matches the user's intent. |
 | **Capital Hold** | A financial reserve placed on inventory that cannot be shipped due to missing components. |
-| **NIW** | National Interest Waiver. |
 | **CUI** | Controlled Unclassified Information. |
 
 <!-- Refined by GovSignal Automation -->
