@@ -50,3 +50,17 @@ class NewYorkEmpireStateConnector:
             "description": "Grant opportunities for sustainable semiconductor manufacturing in Upstate New York.",
             "url": "https://esd.ny.gov/green-chips"
         }]
+
+class ArizonaCommerceConnector:
+    """
+    Mock connector for Arizona Commerce Authority.
+    Target: TSMC/Semiconductor supply chain.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying AZ Commerce")
+        return [{
+            "source": "AZ Commerce",
+            "title": "National Semiconductor Economic Roadmap",
+            "description": "State-level incentives for water recycling systems in semiconductor fabs.",
+            "url": "https://www.azcommerce.com/"
+        }]
