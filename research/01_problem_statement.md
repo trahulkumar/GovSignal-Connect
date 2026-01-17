@@ -8,3 +8,5 @@ Current ERP systems (SAP, Oracle) are reactive. They manage internal inventory b
 
 ## 3. Objective
 This research proposes **GovSignal-Connect**, an autonomous agent system that monitors unstructured government data (SAM.gov, Federal Register, State Economic Development boards) to predict supply chain demand shifts and automate capital allocation decisions.
+
+<!-- Refined by GovSignal Automation -->
