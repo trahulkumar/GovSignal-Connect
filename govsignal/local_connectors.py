@@ -176,3 +176,17 @@ class CityOfHuntsvilleConnector:
             "description": "City liaison contract for perimeter security at Redstone Arsenal.",
             "url": "https://www.huntsvilleal.gov/business/bids-rfps/"
         }]
+
+class NorthCarolinaBiotechConnector:
+    """
+    Mock connector for North Carolina Biotechnology Center (Research Triangle).
+    Target: Bio-Manufacturing.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying NC Biotech")
+        return [{
+            "source": "NC Biotech",
+            "title": "Translation Research Grant",
+            "description": "Commercialization funding for university-spinout gene therapies.",
+            "url": "https://www.ncbiotech.org/funding"
+        }]
