@@ -162,3 +162,17 @@ class WashingtonCommerceConnector:
             "description": "Funding for composite material research in Everett/Renton.",
             "url": "https://www.commerce.wa.gov/"
         }]
+
+class CityOfHuntsvilleConnector:
+    """
+    Mock connector for City of Huntsville (Alabama).
+    Target: Defense/Rocket Propulsion.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying City of Huntsville")
+        return [{
+            "source": "City of Huntsville",
+            "title": "Redstone Arsenal Support Services",
+            "description": "City liaison contract for perimeter security at Redstone Arsenal.",
+            "url": "https://www.huntsvilleal.gov/business/bids-rfps/"
+        }]
