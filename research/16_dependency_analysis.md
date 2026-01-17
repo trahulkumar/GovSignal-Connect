@@ -11,3 +11,5 @@
 ## 3. Supply Chain Risk Management
 All dependencies are pinned in `requirements.txt` with specific versions.
 Images are built from trusted base images (`python:3.10-slim-bullseye`).
+
+<!-- Refined by GovSignal Automation -->
