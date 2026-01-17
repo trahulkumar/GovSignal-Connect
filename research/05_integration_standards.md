@@ -18,3 +18,5 @@ For Oracle environments, we utilize the **Oracle Fusion Cloud SCM REST API**.
 
 ## 3. Middleware
 Integration is decoupled via an Enterprise Service Bus (MuleSoft/Apache Camel) to ensure failure isolation.
+
+<!-- Refined by GovSignal Automation -->
