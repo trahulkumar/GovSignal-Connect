@@ -19,3 +19,5 @@ We monitor 20+ distinct non-federal sources to detect "grassroots" supply chain 
 
 ## 3. Data Ingestion Strategy
 Connectors normalize disparate local formats (HTML scrapers, RSS feeds, Socrata APIs) into a unified `ConnectorResponse` schema.
+
+<!-- Refined by GovSignal Automation -->
