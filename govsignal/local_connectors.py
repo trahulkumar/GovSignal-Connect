@@ -120,3 +120,17 @@ class VirginiaEconomicDevConnector:
             "description": "R&D funding for secure 5G and autonomous systems in Northern Virginia.",
             "url": "https://www.vedp.org/"
         }]
+
+class CityOfAustinConnector:
+    """
+    Mock connector for City of Austin.
+    Target: High-Tech/Software services.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying City of Austin")
+        return [{
+            "source": "City of Austin",
+            "title": "Smart City AI Initiative RFP",
+            "description": "Request for proposals for traffic management AI solutions.",
+            "url": "https://www.austintexas.gov/financeonline/finance/index.cfm"
+        }]
