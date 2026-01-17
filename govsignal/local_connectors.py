@@ -106,3 +106,17 @@ class FloridaDefenseConnector:
             "description": "Funding for Orlando-based MS&T (Modeling, Simulation & Training) companies.",
             "url": "https://www.enterpriseflorida.com/fdstf/"
         }]
+
+class VirginiaEconomicDevConnector:
+    """
+    Mock connector for Virginia Economic Development Partnership.
+    Target: Defense & Cybersecurity.
+    """
+    def get_opportunities(self, keywords: list) -> ConnectorResponse:
+        logger.info("Querying VEDP")
+        return [{
+            "source": "VEDP",
+            "title": "Commonwealth Cyber Initiative",
+            "description": "R&D funding for secure 5G and autonomous systems in Northern Virginia.",
+            "url": "https://www.vedp.org/"
+        }]
