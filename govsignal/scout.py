@@ -13,6 +13,8 @@ class ProcurementScout:
     Strategic Procurement Agent (The Scout).
     Reads unstructured government data and converts it into structured JSON signals
     for legacy ERP ingestion.
+    
+    Implements a keyword-density scoring algorithm to determine 'Demand Probability'.
     """
 
     def __init__(self, config_path: str):
