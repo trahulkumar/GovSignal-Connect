@@ -27,7 +27,7 @@ This prototype demonstrates two specific high-value scenarios:
 
 ## 3. System Architecture
 
-GovSignal-Connect operates as a Decentralized Multi-Agent System (MAS). The "Procurement Scout" is the primary external sensor, but it acts in concert with internal agents to execute the full "Smart Overlay" strategy.
+GovSignal-Connect operates as a Distributed Service Architecture. The "Procurement Scout" is the primary external sensor, but it acts in concert with internal modules to execute the full "Smart Overlay" strategy.
 
 ### 3.1 System Context Diagram
 
@@ -41,8 +41,8 @@ graph TD
 
     subgraph GovSignal [GovSignal-Connect - The Smart Overlay]
         Scout[The Scout - External Signal]
-        Inventory[Inventory Agent - Stock Analysis]
-        Credit[Credit Agent - Capital Release]
+        Inventory[Inventory Module - Stock Analysis]
+        Credit[Credit Module - Capital Release]
     end
 
     subgraph Enterprise [Enterprise Core]
