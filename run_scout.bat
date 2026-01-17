@@ -1,5 +1,5 @@
 @echo off
-echo [INFO] Starting GovSignal Scout...
+echo [INFO] Starting GovSignal Scout (Prototype Mode)...
 
 if not exist .venv (
     echo [ERROR] Virtual environment not found. Please run setup_env.bat first.
