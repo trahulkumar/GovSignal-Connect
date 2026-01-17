@@ -9,3 +9,5 @@ This project operates under a **Benevolent Dictator for Life (BDFL)** model, man
 
 ## 3. Code of Conduct
 We adhere to the [Contributor Covenant v2.1](https://www.contributor-covenant.org/).
+
+<!-- Refined by GovSignal Automation -->
