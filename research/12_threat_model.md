@@ -13,3 +13,5 @@
 ## 3. Denial of Service (DoS)
 **Threat:** Flooding the system with noise to hide a real signal.
 **Mitigation:** Adaptive thresholding and anomaly detection in signal volume.
+
+<!-- Refined by GovSignal Automation -->
