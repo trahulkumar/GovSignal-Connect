@@ -15,3 +15,5 @@ The Credit Agent (Human-in-the-Loop component) signs approved transactions using
 ## 4. Key Management
 - **Rotation:** API Keys for connectors rotate every 90 days.
 - **Storage:** Environment variables injected at runtime (no hardcoding).
+
+<!-- Refined by GovSignal Automation -->
