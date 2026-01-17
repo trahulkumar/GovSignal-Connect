@@ -2,11 +2,20 @@ import json
 import logging
 import yaml
 from datetime import datetime
-from .connectors import SamGovConnector, FederalRegisterConnector
+from .connectors import SamGovConnector, FederalRegisterConnector, ConnectorResponse
+from .local_connectors import (
+    CaliforniaGoBizConnector, TexasEnterpriseFundConnector, NewYorkEmpireStateConnector,
+    ArizonaCommerceConnector, OhioDevelopmentConnector, MassLifeSciencesConnector,
+    FloridaDefenseConnector, VirginiaEconomicDevConnector, CityOfAustinConnector,
+    CityOfBostonConnector, WashingtonCommerceConnector, CityOfHuntsvilleConnector,
+    NorthCarolinaBiotechConnector, PortAuthorityNYNJConnector, GeorgiaEconomicDevConnector,
+    MichiganEconomicDevConnector, IndianaEconomicDevConnector, PennCommunityDevConnector,
+    NationalGovernorsAssocConnector, CouncilStateGovernmentsConnector
+)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger("GovSignal.Scout")
+logger = logging.getLogger(__name__)
 
 class ProcurementScout:
     """
@@ -24,6 +33,39 @@ class ProcurementScout:
         self.config = self._load_config(config_path)
         self.sam_connector = SamGovConnector()
         self.fr_connector = FederalRegisterConnector()
+        
+        # Initialize local connectors map
+        self.local_connector_map = {
+            "CA_GO_BIZ": CaliforniaGoBizConnector,
+            "TX_TEF": TexasEnterpriseFundConnector,
+            "NY_ESD": NewYorkEmpireStateConnector,
+            "AZ_COMMERCE": ArizonaCommerceConnector,
+            "OH_DEV": OhioDevelopmentConnector,
+            "MASS_LIFE": MassLifeSciencesConnector,
+            "FL_DEFENSE": FloridaDefenseConnector,
+            "VA_EDP": VirginiaEconomicDevConnector,
+            "AUSTIN_CITY": CityOfAustinConnector,
+            "BOSTON_CITY": CityOfBostonConnector,
+            "WA_COMMERCE": WashingtonCommerceConnector,
+            "HUNTSVILLE_CITY": CityOfHuntsvilleConnector,
+            "NC_BIOTECH": NorthCarolinaBiotechConnector,
+            "PA_NYNJ": PortAuthorityNYNJConnector,
+            "GA_ECO_DEV": GeorgiaEconomicDevConnector,
+            "MI_MEDC": MichiganEconomicDevConnector,
+            "IN_IEDC": IndianaEconomicDevConnector,
+            "PA_DCED": PennCommunityDevConnector,
+            "NGA_POLICY": NationalGovernorsAssocConnector,
+            "CSG_COMPACT": CouncilStateGovernmentsConnector
+        }
+        
+        self.active_local_connectors = []
+        enabled_sources = self.config.get('enabled_local_sources', [])
+        for source_key in enabled_sources:
+            if source_key in self.local_connector_map:
+                logger.info(f"Activating local source: {source_key}")
+                self.active_local_connectors.append(self.local_connector_map[source_key]())
+            else:
+                logger.warning(f"Unknown local source key: {source_key}")
         
         # Load surveillance targets from config
         self.targets = self.config.get('surveillance_targets', {})
