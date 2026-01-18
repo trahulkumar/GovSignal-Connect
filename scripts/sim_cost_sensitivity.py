@@ -1,3 +1,21 @@
+"""
+Simulation: Cost Sensitivity Analysis
+=====================================
+
+Goal:
+-----
+Analyze how varying the Stockout Penalty affects the economic viability of the Readiness Protocol vs. Legacy ERP.
+Determines the "Break-even" point regarding criticality of the items (implied by penalty magnitude).
+
+Key Metrics:
+------------
+- Average Total Cost vs. Stockout Penalty (Log Scale)
+- Break-even Cost
+
+Hypothesis:
+-----------
+As Stockout Penalty increases (items become more critical), the Readiness Protocol's value increases, justifying its costs.
+"""
 
 import numpy as np
 import pandas as pd
