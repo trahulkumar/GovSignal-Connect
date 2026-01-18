@@ -1,23 +1,21 @@
-# Data Source Analysis
+# Data Source Analysis: The Intelligence Grid
 
-## 1. Federal Sources
-| Source | Type | Update Frequency | Data Format | Reliability |
-|--------|------|------------------|-------------|-------------|
-| **SAM.gov** | Contract Solicitations | Daily | API (JSON) | High |
-| **Federal Register** | Policy/Notices | Daily | API (JSON/XML) | High |
+## 1. Federal Sources (The "Official" Record)
+| Source | Type | Update Frequency | Strategic Value |
+|--------|------|------------------|-----------------|
+| **SAM.gov** | Contract Opportunities | Real-Time (API) | **Confirmation:** Validates funding is released. |
+| **Federal Register** | Policy Notices | Daily (06:00 EST) | **Early Warning:** Detects policy shifts 6-12 months before contracts. |
 
-## 2. State & Local Sources (Selected)
-We monitor 20+ distinct non-federal sources to detect "grassroots" supply chain shifts before they appear in federal data.
+## 2. State & Local Sources (The "Grassroots" Signal)
+We monitor 20+ non-federal sources to detect **"Pre-Solicitation"** indicators—infrastructure planning that precedes federal involvement.
 
-| Region | Key Sources | Focus Area |
-|--------|-------------|------------|
-| **West** | CA GO-Biz, AZ Commerce, WA Commerce | Semiconductors, Aerospace, Cloud Infrastructure |
-| **South** | TX TEF, FL Defense TF, NC Biotech, Huntsville | Defense Mfg, Bio-Pharma, Rocket Propulsion |
-| **East** | NY ESD, Mass Life Sci, VEDP, PA DCED, Port Authority | Chip Fabs, Biologics, Cyber-physical, Logistics |
-| **Midwest** | OH Development, MI MEDC, IN IEDC | "Silicon Heartland", Auto-Defense, Microelectronics |
-| **Policy** | NGA, CSG | Interstate Compacts, Regulatory Alignment |
+| Region | Key Sources | Focus Area | Impact |
+|--------|-------------|------------|--------|
+| **West** | CA GO-Biz, WA Commerce | Semiconductors, Aerospace |  **Site Selection:** Predicts equipment demand 18 months out. |
+| **South** | TX TEF, Huntsville (AL) | Defense Mfg, Propulsion | **Workforce Flows:** Tracking hiring surges at defense hubs. |
+| **East** | NY ESD, Mass Life Sci | Chip Fabs, Biologics | **Grant Awards:** Tracks R&D capital before it hits procurement. |
+| **Midwest** | OH, MI, IN (IEDC) | "Silicon Heartland" | **Re-shoring:** Monitors "Rust Belt" modernization projects. |
 
 ## 3. Data Ingestion Strategy
-Connectors normalize disparate local formats (HTML scrapers, RSS feeds, Socrata APIs) into a unified `ConnectorResponse` schema.
-
-<!-- Refined by GovSignal Automation -->
+- **Normalization:** All disparate feeds (RSS, HTML, Socrata) are mapped to a unified `ConnectorResponse` schema.
+- **Latency Target:** < 15 minutes from publication to ERP ingestion (vs. 48 hours for human analysts).
