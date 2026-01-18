@@ -1,35 +1,64 @@
 ![Status](https://img.shields.io/badge/Status-Research_Prototype-blue)
+![Paper](https://img.shields.io/badge/Paper-Under_Review-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-# GovSignal-Connect: Autonomous Procurement Signals for Legacy ERPs via Federal Data Feeds
+# GovSignal-Connect (The Readiness Protocol)
+**Autonomous Procurement Signals for Legacy ERPs via Federal Data Feeds**
 
-**Reference Implementation for the "Smart Overlay" Architecture**
+> **Official Reference Implementation for the White Paper:** *"The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains"* (IEEE Submission 2026).
 
 ## 1. Overview
-GovSignal-Connect is a technical proof-of-concept demonstrating how autonomous agents can bridge the "Inventory Lag" gap in critical industries.
+GovSignal-Connect is a technical proof-of-concept demonstrating how autonomous agents can bridge the "Inventory Lag" gap in critical industries. It serves as the "Smart Overlay" architecture described in the Readiness Protocol research.
 
-Legacy ERP systems (SAP, Oracle) are historically reactive—optimizing inventory based on past consumption or committed orders. In high-volatility sectors like Defense and Semiconductors, this reactivity leads to supply shortages during rapid policy shifts (e.g., CHIPS Act funding or sudden DoD solicitations).
+Legacy ERP systems (SAP, Oracle) are historically reactive—optimizing inventory based on past consumption. In high-volatility sectors like Defense and Semiconductors, this reactivity leads to supply shortages during rapid policy shifts. This project implements the **Strategic Procurement Agent ("The Scout")**, a predictive layer that monitors unstructured government data streams (SAM.gov, Federal Register) to trigger pre-emptive capital release.
 
-This "Strategic Procurement Agent" (The Scout) acts as a predictive layer. It continuously monitors unstructured government data streams (SAM.gov, Federal Register), normalizes them into structured "Signals," and feeds them into legacy ERPs to trigger pre-emptive capital release.
+## 2. Simulation Results & Validation
+To validate the "Readiness Protocol," we conducted a Monte Carlo simulation (N=1000) comparing this Signal-Based Logic against Standard ERP Logic.
 
-## 2. Use Cases
+### Key Finding 1: Speed (75% Latency Reduction)
+The protocol successfully decouples procurement from administrative lag, reducing effective lead times for critical assets (e.g., TWT Amplifiers) from **12 months to 3 months**.
 
-This prototype demonstrates two specific high-value scenarios:
+![Lead Time Comparison](output/lead_time_comparison.png)
+*(Figure 1: Comparison of Average Days to Delivery. The Readiness Protocol shifts the distribution significantly leftward.)*
 
-### Case A: Semiconductor Supply Chain
-- **Trigger**: The Federal Register publishes a "CHIPS Act Funding Opportunity" for domestic nanofabrication.
-- **Signal**: The Scout detects the grant, correlates it with "Nanofabrication," and predicts a demand spike for specific assets.
-- **Action**: A signal is sent to the ERP to "Release Capital Hold" for **High-Vacuum Chambers**, securing long-lead inventory before market saturation.
+### Key Finding 2: The "Resilience Premium"
+Our analysis identified a "Criticality Threshold." While the Readiness Protocol incurs higher holding costs (~346% premium) in stable times, it becomes mathematically superior for assets where the **Stockout Penalty exceeds $800,000**.
 
-### Case B: Defense Industrial Base
-- **Trigger**: SAM.gov lists a "DoD Solicitation" for "Electronic Warfare Readiness."
-- **Signal**: The Scout identifies "Jamming Pods" requirements.
-- **Action**: Immediate recommendation to increase stock levels for **TWT (Traveling Wave Tube) Amplifiers**, a critical sub-component for EW systems.
+![Total Cost Comparison](output/total_cost_comparison.png)
+*(Figure 2: The financial trade-off. Policy B (Readiness) costs more in working capital but eliminates catastrophic stockout risks.)*
 
-## 3. System Architecture
+---
 
-GovSignal-Connect operates as a Distributed Service Architecture. The "Procurement Scout" is the primary external sensor, but it acts in concert with internal modules to execute the full "Smart Overlay" strategy.
+## 3. How to Reproduce Results
+This repository contains the exact simulation scripts used to generate the data for the IEEE white paper.
 
-### 3.1 System Context Diagram
+**Prerequisites:**
+- Python 3.10+
+- `uv` package manager (recommended) or standard pip.
+
+**Step 1: Setup Environment**
+```powershell
+setup_env.bat
+```
+
+**Step 2: Run the Monte Carlo Simulation**
+To generate the graphs and calculating the ROI/Latency metrics:
+```powershell
+python readiness_simulation.py
+```
+Outputs will be saved to the `output/` directory.
+
+**Step 3: Run the Live Scout Agent**
+To run the NLP surveillance agent against live/mock federal data:
+```powershell
+run_scout.bat
+```
+
+## 4. System Architecture
+
+GovSignal-Connect operates as a Distributed Service Architecture.
+
+### 4.1 System Context Diagram
 
 ```mermaid
 graph TD
@@ -62,64 +91,41 @@ graph TD
     ERP -- Purchase Order Created --> SCM
 ```
 
-### 3.2 Data Flow
+### 4.2 Data Flow
+
 The system follows a strict unidirectional data flow to ensure signal integrity:
 
-1.  **Ingestion (The Scout):** The Scout continuously polls unstructured federal feeds. It filters noise using the `critical_asset_ontology`.
-2.  **Normalization (External Signal):** Raw text is converted into a `Standard Signal` JSON payload. This isolates the legacy ERP from the chaos of unstructured government data.
-3.  **Internal Logic (ERP):** The standardized signal is ingested by the ERP via REST or IDoc interfaces. The ERP handles the "Internal Logic" (e.g., checking specific warehouse bin levels, calculating lead times based on preferred vendors).
+1.  **Ingestion (The Scout):** The Scout continuously polls unstructured federal feeds (SAM.gov, Federal Register, 20+ State Sources).
+2.  **Normalization:** Raw text is converted into a Standard Signal JSON payload.
+3.  **Internal Logic:** The standardized signal is ingested by the ERP via REST or IDoc interfaces.
 
-### 3.3 Auditability & Compliance
-To meet requirements for **ITAR (International Traffic in Arms Regulations)** and **FDA (Food and Drug Administration)** validations, the system enforces strict audit trails:
+## 5. Use Cases
 
--   **Decision Logging:** Every "Demand Probability" score is logged with its timestamp and source snippet.
--   **Immutable Records:** Actionable signals sent to the ERP (`release_capital_hold`) are hashed and stored to provide a tamper-evident record of *why* automated purchasing decisions were made.
--   **Human-in-the-Loop:** For signals with a confidence score between 0.5 and 0.8 (`flag_for_review`), the Credit Agent requires a human digital signature before releasing funds.
+### Case A: Semiconductor Supply Chain
+-   **Trigger:** The Federal Register publishes a "CHIPS Act Funding Opportunity."
+-   **Action:** The Scout predicts demand for High-Vacuum Chambers and signals the ERP to "Release Capital Hold," securing inventory before market saturation.
 
-### 3.4 Source Coverage (New!)
-In addition to **SAM.gov** and **Federal Register**, the Scout now monitors **20+ State & Local** sources for deeper supply chain signals:
-- **State Economic Development:** CA (GO-Biz), TX (TEF), NY (ESD), AZ (ACA), OH (Development), GA, MI, IN, PA, WA.
-- **Municipal & Regional:** Austin, Boston, Huntsville, Port Authority NY/NJ.
-- **Specialized/Non-Profit:** Mass Life Sciences, NC Biotech, Florida Defense Task Force, NGA, CSG, Virginia EDP.
+### Case B: Defense Industrial Base
+-   **Trigger:** SAM.gov lists a "DoD Solicitation" for "Electronic Warfare Readiness."
+-   **Action:** Immediate recommendation to increase stock levels for TWT Amplifiers.
 
-## 4. Research Specifications & Documentation
+## 6. Citation
 
-This project maintains a rigorous documentation standard to satisfy audit and compliance requirements.
+If you use this code or the "Readiness Protocol" logic in your research, please cite the upcoming paper:
 
+```bibtex
+@article{Kumar2026Readiness,
+  title={The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains},
+  author={Kumar, [Your Name]},
+  journal={IEEE Transactions on Engineering Management (Submitted)},
+  year={2026}
+}
+```
+
+## 7. Documentation
 | Category | Document | Description |
-|----------|----------|-------------|
-| **Core** | [Problem Statement](research/01_problem_statement.md) | Academic definition of the inventory lag problem. |
-| **Methods** | [NLP Methodology](research/02_methodology_nlp.md) | Mathematical definition of the KDA scoring algorithm. |
-| **Security** | [Threat Model](research/12_threat_model.md) | Assessment of adversarial risks (poisoning, DoS). |
-| **Compliance** | [Regulatory Framework](research/11_regulatory_compliance.md) | Adherence to NIST SP 800-171 and SOX. |
-| **Integration** | [API Spec (OpenAPI)](research/04_api_specifications.yaml) | Standardized interface for ERP ingestion. |
-| **Roadmap** | [Future Roadmap](research/08_future_roadmap.md) | Planned evolution to Semantic RAG and Autonomous Negotiation. |
-
-> **Note:** Full documentation including [Scalability Reports](research/10_scalability_report.md) and [Audit Processes](research/13_audit_process.md) can be found in the [`research/`](research/) directory.
-
-## 5. Technical Implementation
-
-This repository contains:
-- `govsignal/scout.py`: The core agent implementing the surveillance loop and [advanced NLP demand probability scoring](research/02_methodology_nlp.md).
-- `govsignal/connectors.py`: Mock adapters for federal APIs (simulating API responses for demonstration).
-- `tests/`: Comprehensive test suite covering unit logic, 20+ local connectors, and integration cycles.
-- `examples/config.yaml`: Configuration defining the surveillance targets and keyword ontologies.
-
-### Running the Prototype
-
-**Prerequisites:**
-- Python 3.10+
-- `uv` package manager (recommended) or standard pip.
-
-**Setup:**
-1. Initialize the environment:
-   ```powershell
-   setup_env.bat
-   ```
-
-**Execution:**
-1. Run the Scout agent:
-   ```powershell
-   run_scout.bat
-   ```
-2. Observe the JSON output in the console, simulating the API payload sent to an ERP integration endpoint.
+|---|---|---|
+| Core | [Problem Statement](research/01_problem_statement.md) | Academic definition of the inventory lag problem. |
+| Methods | [NLP Methodology](research/02_methodology_nlp.md) | Mathematical definition of the KDA scoring algorithm. |
+| Security | [Threat Model](research/12_threat_model.md) | Assessment of adversarial risks (poisoning, DoS). |
+| Sim Data | [Simulation Report](docs/Readiness_Protocol_Simulation_Report.md) | Full breakdown of the Monte Carlo analysis. |
