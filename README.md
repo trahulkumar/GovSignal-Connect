@@ -1,5 +1,5 @@
 ![Status](https://img.shields.io/badge/Status-Research_Prototype-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/License-Apache_2.0-green)
 
 # GovSignal-Connect (The Readiness Protocol)
 **Autonomous Procurement Signals for Legacy ERPs via Federal Data Feeds**

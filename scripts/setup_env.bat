@@ -13,7 +13,7 @@ echo [INFO] Creating virtual environment...
 uv venv .venv
 
 echo [INFO] Installing dependencies...
-uv pip install -r requirements.txt
+uv pip install -r config/requirements.txt
 
 echo [INFO] Setup complete.
 pause
