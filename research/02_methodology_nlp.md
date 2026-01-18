@@ -13,7 +13,5 @@ Where:
 - $\text{Weight} = 0.2$
 - $\mathbb{I}(condition)$ is an indicator function (1 if true, 0 if false).
 
-## 3. Justification for Deterministic Approach
-While generative models offer superior semantic understanding, they unfortunately introduce non-determinism. For financial auditability (SOX compliance), the signal generation mechanism must be reproducible. Our KDA approach ensures that identical inputs always yield identical scores, a requirement for automated capital release.
-
-<!-- Refined by GovSignal Automation -->
+## 3. Justification for Deterministic XAI (Explainable AI)
+While LLMs offer superior semantic generation, they lack the **interpretability** required for automated financial controls (SOX Section 404). This deterministic KDA model serves as a "Compliance Baseline," ensuring that every capital release trigger is mathematically traceable to a specific government solicitation text, eliminating "hallucination" risk in financial workflows.
