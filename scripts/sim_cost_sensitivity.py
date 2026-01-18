@@ -12,8 +12,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-class SupplyChainSim:
-    def __init__(self, penalty):
-        self.penalty = penalty
-        self.cost = 0
-        # ...
+# ... Execution Loop logic ...
+for p in PENALTIES:
+    # Run N iterations
+    pass
