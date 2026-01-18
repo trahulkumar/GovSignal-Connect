@@ -98,3 +98,40 @@ class SupplyChainSim:
     def total_cost(self):
         return self.total_holding_cost + self.total_stockout_cost
 
+def run_simulation():
+    results_a = []
+    results_b = []
+
+    print(f"Starting simulation with N={NUM_ITERATIONS} iterations...")
+
+    for i in range(NUM_ITERATIONS):
+        # Generate Demand Profile (fixed seed per iteration for fairness if we wanted pairs, 
+        # but global seed handled above ensures reproducibility)
+        demands = np.random.poisson(DEMAND_MEAN, SIMULATION_MONTHS)
+        
+        # Generate Signal Profile
+        # Signal needs to be somewhat rare to not bankrupt Policy B.
+        # Let's assume a signal that spikes occasionally. 
+        # Using a Beta distribution or similar to bias towards low values but occasional highs.
+        # Or simple uniform.
+        # Let's use Uniform[0,1] but only > 0.75 triggers. 
+        # If random, it triggers 25% of months (3 times a year). That's a bit high for "Strategic" maybe?
+        # Let's assume "Readiness" signals are specialized. 
+        # Let's stick to Uniform for complying with "confidence > 0.75".
+        signals = np.random.uniform(0, 1, SIMULATION_MONTHS)
+        
+        # --- Policy A ---
+        sim_a = SupplyChainSim("Policy A (Legacy ERP)", POLICY_A_LEAD_TIME)
+        # --- Policy B ---
+        sim_b = SupplyChainSim("Policy B (Readiness Protocol)", POLICY_B_LEAD_TIME)
+
+        for m in range(SIMULATION_MONTHS):
+            sim_a.step(m, demands[m], signals[m])
+            sim_b.step(m, demands[m], signals[m])
+
+        results_a.append(sim_a.total_cost())
+        results_b.append(sim_b.total_cost())
+
+    return results_a, results_b
+
+def generate_visualizations(results_a, results_b):
