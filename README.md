@@ -37,7 +37,7 @@ This repository contains the exact simulation scripts used to generate the data 
 
 **Step 1: Setup Environment**
 ```powershell
-setup_env.bat
+scripts\setup_env.bat
 ```
 
 **Step 2: Run the Monte Carlo Simulation**
@@ -50,7 +50,7 @@ Outputs will be saved to the `output/` directory.
 **Step 3: Run the Live Scout Agent**
 To run the NLP surveillance agent against live/mock federal data:
 ```powershell
-run_scout.bat
+scripts\run_scout.bat
 ```
 
 ## 4. System Architecture
