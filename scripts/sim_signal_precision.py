@@ -12,13 +12,21 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import os
-np.random.seed(42)
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
+# Simulation: Signal Precision
+# Correlating signal to future demand
+NUM_ITERATIONS = 500
+MONTHS = 36
+
+def generate_correlated_signal(demands):
+    # If demand in next 3 months is high, signal goes high
+    signals = []
+    for i in range(len(demands)):
+        future_avg = np.mean(demands[i:min(i+3, len(demands))]) if i < len(demands) else 5
+        if future_avg > 7: # Threshold
+            signals.append(np.random.uniform(0.7, 1.0))
+        else:
+            signals.append(np.random.uniform(0.0, 0.4)) # Quiet otherwise
+    return signals
 
 class SupplyChainSim:
     def __init__(self, policy_name, lead_time):
@@ -48,6 +56,23 @@ class SupplyChainSim:
             
         if trigger: self.pipeline.append([month + self.lead_time, 60])
 
-def run():
-    # ... logic ...
-    pass
+if __name__ == "__main__":
+    costs_a, costs_b = [], []
+    for _ in range(NUM_ITERATIONS):
+        demands = np.random.poisson(5, MONTHS)
+        # Perfect Signal
+        signals = generate_correlated_signal(demands)
+        
+        s_a = SupplyChainSim("Legacy", 12)
+        s_b = SupplyChainSim("Readiness", 3)
+        for m in range(MONTHS):
+            s_a.step(m, demands[m], signals[m])
+            s_b.step(m, demands[m], signals[m])
+        costs_a.append(s_a.cost)
+        costs_b.append(s_b.cost)
+
+    plt.figure()
+    plt.boxplot([costs_a, costs_b], labels=['Legacy (Blind)', 'Readiness (Precise)'])
+    plt.title('Impact of High-Precision Signal')
+    plt.ylabel('Cost')
+    plt.savefig(os.path.join(OUTPUT_DIR, "signal_precision_results.png"))
