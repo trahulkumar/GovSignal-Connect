@@ -1,3 +1,18 @@
+"""
+Readiness Simulation v1: Legacy Comparison
+==========================================
+
+Goal:
+-----
+Initial simulation comparing two primary policies to establish the value of the Readiness Protocol:
+1. Policy A: Legacy ERP (Standard Reorder Point with long lead times)
+2. Policy B: Readiness Protocol (Signal-based triggering with reduced lead times)
+
+Key Metrics:
+------------
+- Lead Time Comparison (Average Days to Delivery)
+- Total Cost of Readiness (Holding + Stockout Penalties)
+"""
 
 import numpy as np
 import pandas as pd

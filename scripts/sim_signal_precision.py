@@ -1,3 +1,20 @@
+"""
+Simulation: High-Precision Signal Impact
+========================================
+
+Goal:
+-----
+Demonstrate the maximum potential of the Readiness Protocol when using a highly trusted, high-precision signal (Future Demand correlated).
+Contrasts "Blind" Legacy policy with a "Precise" Readiness policy.
+
+Key Metrics:
+------------
+- Total Cost Distribution (Boxplot)
+
+Methodology:
+------------
+Generates a synthetic signal that is explicitly correlated with demand 3 months in the future, simulating a highly effective Scout Agent.
+"""
 
 import numpy as np
 import pandas as pd

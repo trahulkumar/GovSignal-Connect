@@ -1,3 +1,22 @@
+"""
+Simulation: Hybrid Policy Evaluation
+====================================
+
+Goal:
+-----
+Evaluate a "Hybrid" policy that combines traditional Inventory Management (ROP) with Signal-based Logic.
+Compares Pure Legacy, Pure Readiness, and Hybrid approaches.
+
+Key Metrics:
+------------
+- Total Cost Distribution (Boxplot)
+
+Policies:
+---------
+1. Legacy: 12mo Lead Time, ROP Trigger only.
+2. Readiness: 3mo Lead Time, Signal Trigger only.
+3. Hybrid: 3mo Lead Time, uses BOTH a lower ROP (Safety Net) and High Signal (Surge Response).
+"""
 
 import numpy as np
 import pandas as pd

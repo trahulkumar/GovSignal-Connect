@@ -1,3 +1,21 @@
+"""
+Simulation: Black Swan Event Analysis
+=====================================
+
+Goal:
+-----
+Compare the resilience of Legacy and Readiness policies during a "Black Swan" event (extreme unexpected demand spike).
+Specifically models a 10x demand surge for 6 consecutive months.
+
+Key Metrics:
+------------
+- Total Cost Impact (Holding + Stockout)
+- Durability (Implicit in Stockout Costs)
+
+Hypothesis:
+-----------
+The Readiness Protocol (3mo Lead Time, Signal-driven) should adapt faster to the surge than the Legacy Policy (12mo Lead Time).
+"""
 
 import numpy as np
 import pandas as pd
