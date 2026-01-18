@@ -210,3 +210,5 @@ if __name__ == "__main__":
     print(f"Visualizations saved to:\n  - {GRAPH_1_PATH}\n  - {GRAPH_2_PATH}")
 
 # Refined logic
+
+# Updated metrics
