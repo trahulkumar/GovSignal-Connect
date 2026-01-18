@@ -1,15 +1,16 @@
 # Software Bill of Materials (SBOM) & Dependency Analysis
 
-## 1. Core Dependencies
-- **requests (v2.31):** HTTP client. Risk: Low. Standard library.
-- **PyYAML (v6.0):** Configuration parsing. Risk: Medium (CVE-2020-14343 fixed in 5.4+).
+## 1. Core Architecture (The Agent System)
+- **requests (v2.31):** HTTP client for connector polling. (External dependency).
+- **PyYAML (v6.0):** Configuration parsing for ontology mapping.
+- **pydantic (v2.0):** Data validation for JSON signal schemas (ensures strict typing).
 
-## 2. Dev Dependencies
-- **pytest:** Testing framework. Data-collection only.
-- **black/flake8:** Linting.
+## 2. Simulation & AI Stack (The "Readiness Protocol" Engine)
+*Libraries used to generate the Monte Carlo validation data.*
+- **numpy / pandas:** Stochastic modeling and inventory vectorization.
+- **scipy:** Statistical distribution handling (Poisson/Normal demand curves).
+- **matplotlib / seaborn:** Generation of validation graphs (`lead_time_comparison.png`).
 
-## 3. Supply Chain Risk Management
-All dependencies are pinned in `requirements.txt` with specific versions.
-Images are built from trusted base images (`python:3.10-slim-bullseye`).
-
-<!-- Refined by GovSignal Automation -->
+## 3. Supply Chain Risk Management (SCRM)
+- **Pinning:** All dependencies are pinned in `requirements.txt` with SHA-256 hashes to prevent "Dependency Confusion" attacks.
+- **Base Image:** Builds utilize distroless container images (`gcr.io/distroless/python3`) to minimize attack surface (Aligns with CISA guidelines).
