@@ -1,3 +1,18 @@
+"""
+Readiness Simulation v1: Legacy Comparison
+==========================================
+
+Goal:
+-----
+Initial simulation comparing two primary policies to establish the value of the Readiness Protocol:
+1. Policy A: Legacy ERP (Standard Reorder Point with long lead times)
+2. Policy B: Readiness Protocol (Signal-based triggering with reduced lead times)
+
+Key Metrics:
+------------
+- Lead Time Comparison (Average Days to Delivery)
+- Total Cost of Readiness (Holding + Stockout Penalties)
+"""
 
 import numpy as np
 import pandas as pd
@@ -24,8 +39,8 @@ POLICY_A_ROP = 80  # 12 * 5 + 20 safety stock
 POLICY_B_LEAD_TIME = 3
 POLICY_B_SIGNAL_THRESHOLD = 0.75
 
-# Get project root (assuming script is in scripts/ subdir)
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Get project root (assuming script is in root)
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 GRAPH_1_PATH = os.path.join(OUTPUT_DIR, "lead_time_comparison.png")
