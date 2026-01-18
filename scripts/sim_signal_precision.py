@@ -13,3 +13,6 @@ OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Simulation: Signal Precision
+# Correlating signal to future demand
+LOOKAHEAD = 3
+DEMAND_THRESHOLD = 8
