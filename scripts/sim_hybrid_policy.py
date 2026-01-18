@@ -12,4 +12,6 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Class Setup ...
+    # Hybrid Logic
+    if inv < ROP: order
+    if signal > threshold: order
