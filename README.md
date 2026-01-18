@@ -1,11 +1,10 @@
 ![Status](https://img.shields.io/badge/Status-Research_Prototype-blue)
-![Paper](https://img.shields.io/badge/Paper-Under_Review-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 # GovSignal-Connect (The Readiness Protocol)
 **Autonomous Procurement Signals for Legacy ERPs via Federal Data Feeds**
 
-> **Official Reference Implementation for the White Paper:** *"The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains"* (IEEE Submission 2026).
+> **Reference Implementation for the Technical White Paper:** *"The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains"* (2026).
 
 ## 1. Overview
 GovSignal-Connect is a technical proof-of-concept demonstrating how autonomous agents can bridge the "Inventory Lag" gap in critical industries. It serves as the "Smart Overlay" architecture described in the Readiness Protocol research.
@@ -30,7 +29,7 @@ Our analysis identified a "Criticality Threshold." While the Readiness Protocol 
 ---
 
 ## 3. How to Reproduce Results
-This repository contains the exact simulation scripts used to generate the data for the IEEE white paper.
+This repository contains the exact simulation scripts used to generate the data for the technical report.
 
 **Prerequisites:**
 - Python 3.10+
@@ -111,16 +110,7 @@ The system follows a strict unidirectional data flow to ensure signal integrity:
 
 ## 6. Citation
 
-If you use this code or the "Readiness Protocol" logic in your research, please cite the upcoming paper:
-
-```bibtex
-@article{Kumar2026Readiness,
-  title={The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains},
-  author={Kumar, [Your Name]},
-  journal={IEEE Transactions on Engineering Management (Submitted)},
-  year={2026}
-}
-```
+Will be updated after the paper is published
 
 ## 7. Documentation
 | Category | Document | Description |
