@@ -12,4 +12,4 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Cost Sensitivity Analysis
+PENALTIES = [10000, 50000, 100000, 500000]
