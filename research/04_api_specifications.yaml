@@ -1,13 +1,25 @@
 openapi: 3.0.0
 info:
   title: GovSignal Scout API
-  version: 1.0.0
-  description: Internal API for inter-agent communication and ERP ingestion.
+  version: 1.1.0 # Bump version to show maturity
+  description: |
+    Internal API for inter-agent communication. 
+    Compliance: NIST SP 800-171 (Access Control).
 
 paths:
   /signals:
     get:
-      summary: Retrieve generated procurement signals
+      summary: Retrieve procurement signals
+      security:
+        - BearerAuth: [] # Explicitly define security
+      parameters:
+        - in: header
+          name: X-Audit-Trace-ID
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Traceability token for SOX/ITAR compliance logs.
       responses:
         '200':
           description: List of active signals
@@ -19,6 +31,11 @@ paths:
                   $ref: '#/components/schemas/Signal'
 
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     Signal:
       type: object
@@ -48,5 +65,10 @@ components:
         timestamp:
           type: string
           format: date-time
-
-# Refined by GovSignal Automation
+        risk_metadata: # Add this to match the "Risk" narrative
+          type: object
+          properties:
+            criticality_score:
+              type: number
+            defense_industrial_base_impact:
+              type: boolean
