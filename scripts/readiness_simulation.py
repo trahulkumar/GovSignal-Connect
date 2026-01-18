@@ -135,3 +135,48 @@ def run_simulation():
     return results_a, results_b
 
 def generate_visualizations(results_a, results_b):
+    # Graph 1: Lead Time Comparison
+    # Since Lead Times are fixed parameters (12 months vs 3 months), 
+    # a "Distribution" graph isn't needed if we take the prompt literally about "Average Days to Delivery".
+    # However, to make it a "Graph", we can compare the Fixed Lead Times as a bar chart.
+    
+    plt.figure(figsize=(8, 6))
+    policies = ['Policy A\n(Legacy ERP)', 'Policy B\n(Readiness Protocol)']
+    # Convert months to days (approx 30 days/month)
+    avg_days = [POLICY_A_LEAD_TIME * 30, POLICY_B_LEAD_TIME * 30]
+    bars = plt.bar(policies, avg_days, color=['#808080', '#007acc'])
+    
+    plt.title('Lead Time Comparison (Average Days to Delivery)')
+    plt.ylabel('Days')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    
+    for bar in bars:
+        height = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width()/2., height,
+                 f'{int(height)} days',
+                 ha='center', va='bottom')
+    
+    plt.savefig(GRAPH_1_PATH)
+    plt.close()
+
+    # Graph 2: Total Cost of Readiness
+    plt.figure(figsize=(10, 6))
+    data = [results_a, results_b]
+    plt.boxplot(data, labels=policies, patch_artist=True, 
+                boxprops=dict(facecolor='#D3D3D3', color='black'),
+                medianprops=dict(color='red'))
+    
+    # Color Policy B box differently
+    ax = plt.gca()
+    box_patches = [patch for patch in ax.patches if isinstance(patch, matplotlib.patches.PathPatch)] # Dependent on implementation, boxplot returns dict usually if not patch_artist
+    # Re-doing simply:
+    # boxplot returns a dictionary
+    
+    plt.title('Total Cost of Readiness (Holding + Stockout Penalties)')
+    plt.ylabel('Total Cost ($)')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    
+    plt.savefig(GRAPH_2_PATH)
+    plt.close()
+
+if __name__ == "__main__":
