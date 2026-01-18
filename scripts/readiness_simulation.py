@@ -180,3 +180,31 @@ def generate_visualizations(results_a, results_b):
     plt.close()
 
 if __name__ == "__main__":
+    import matplotlib
+    import matplotlib.patches
+    
+    results_a, results_b = run_simulation()
+    generate_visualizations(results_a, results_b)
+
+    avg_cost_a = np.mean(results_a)
+    avg_cost_b = np.mean(results_b)
+
+    print(f"Policy A Average Cost: ${avg_cost_a:,.2f}")
+    print(f"Policy B Average Cost: ${avg_cost_b:,.2f}")
+    
+    # Metric Calculation
+    latency_reduction = ((POLICY_A_LEAD_TIME - POLICY_B_LEAD_TIME) / POLICY_A_LEAD_TIME) * 100
+    
+    # ROI of Pre-emptive buy (assuming Cost A is baseline loss, Cost B is improved state)
+    # ROI = (Gain from Investment - Cost of Investment) / Cost of Investment
+    # Here, "Investment" is the Readiness Protocol's cost structure. 
+    # Usually simplest metric is % Cost Savings.
+    # ROI as requested: "ROI of the pre-emptive buy".
+    # Let's interpret as: Savings / Cost_B * 100.
+    savings = avg_cost_a - avg_cost_b
+    roi = (savings / avg_cost_b) * 100 if avg_cost_b > 0 else 0
+
+    print(f"\n--- Metrics ---")
+    print(f"Reduction in Readiness Latency: {latency_reduction:.1f}%")
+    print(f"ROI of Pre-emptive Buy: {roi:.1f}%")
+    print(f"Visualizations saved to:\n  - {GRAPH_1_PATH}\n  - {GRAPH_2_PATH}")
