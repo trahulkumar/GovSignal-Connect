@@ -12,19 +12,35 @@ GovSignal-Connect is a technical proof-of-concept demonstrating how autonomous a
 Legacy ERP systems (SAP, Oracle) are historically reactive—optimizing inventory based on past consumption. In high-volatility sectors like Defense and Semiconductors, this reactivity leads to supply shortages during rapid policy shifts. This project implements the **Strategic Procurement Agent ("The Scout")**, a predictive layer that monitors unstructured government data streams (SAM.gov, Federal Register) to trigger pre-emptive capital release.
 
 ## 2. Simulation Results & Validation
-To validate the "Readiness Protocol," we conducted a Monte Carlo simulation (N=1000) comparing this Signal-Based Logic against Standard ERP Logic.
 
-### Key Finding 1: Speed (75% Latency Reduction)
-The protocol successfully decouples procurement from administrative lag, reducing effective lead times for critical assets (e.g., TWT Amplifiers) from **12 months to 3 months**.
+To rigorously validate the "Readiness Protocol," we conducted a series of Monte Carlo simulations (N=1000) comparing the Agentic Overlay against industry-standard baselines. These tests confirm the protocol's superiority in high-uncertainty environments.
 
-![Lead Time Comparison](output/lead_time_comparison.png)
-*(Figure 1: Comparison of Average Days to Delivery. The Readiness Protocol shifts the distribution significantly leftward.)*
+### 2.1 Latency Reduction (V1)
+**Goal:** Quantify the speed advantage of signal-based triggering.
+*   **Result:** The protocol reduced effective lead times for critical assets from **12 months to 3 months** (75% reduction).
+*   **Metric:** Average Days to Delivery.
+*   ![Lead Time Comparison](output/v1_lead_time_comparison.png)
 
-### Key Finding 2: The "Resilience Premium"
-Our analysis identified a "Criticality Threshold." While the Readiness Protocol incurs higher holding costs (~346% premium) in stable times, it becomes mathematically superior for assets where the **Stockout Penalty exceeds $800,000**.
+### 2.2 Baseline Superiority (V2)
+**Goal:** Compare against robust inventory policies: Legacy ERP, (s, S) Policy, and a Perfect Forecast Oracle.
+*   **Result:** While the Readiness Protocol (Policy B) incurs higher holding costs (~$3.6M) due to strategic buffers, it achieves a **98.9% Service Level** with half the backorder duration (11.7 days vs 22.4 days) of the Legacy Policy.
+*   **Insight:** It closely approximates the "Perfect Oracle's" availability curve (100%) in a way that reactive policies (s, S) cannot.
+*   ![Baseline Comparison](output/baseline_comparison.png)
 
-![Total Cost Comparison](output/total_cost_comparison.png)
-*(Figure 2: The financial trade-off. Policy B (Readiness) costs more in working capital but eliminates catastrophic stockout risks.)*
+### 2.3 Signal Sensitivity "Break-even" (V3)
+**Goal:** Determine the required reliability of the Scout Agent (False Alarm analysis).
+*   **Result:** The Readiness Protocol becomes cheaper than the Legacy Policy once the Scout Agent's **Signal Precision exceeds 0.77**.
+*   **Implication:** If the AI agent is correct >77% of the time, the "Resilience Premium" pays for itself through avoided stockout penalties.
+*   ![Signal Sensitivity](output/v3_sensitivity/signal_sensitivity.png)
+
+### 2.4 Agent Component Validation (V4)
+**Goal:** Isolate the value of individual agents via Ablation Study.
+*   **Result:** The "Full System" (Scout + Inventory + Credit Agents) achieved the highest **Capital Utilization Efficiency (5.15x)**.
+*   **Comparison:**
+    *   Full System: **5.15x** (Best Balance)
+    *   No Credit Constraint: **4.35x** (Inefficient Overstocking)
+    *   Heuristic Only: **3.76x** (Inflexible)
+*   ![Ablation Study](output/v4_ablation/ablation_study.png)
 
 ---
 
