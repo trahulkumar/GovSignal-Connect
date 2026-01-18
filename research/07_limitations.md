@@ -1,16 +1,14 @@
-# Research Limitations
+# Research Limitations & Constraints
 
-## 1. Prototype Constraints
-- **Mock Data:** The current implementation uses static mock responses for all connectors. Real-time integration requires paid API subscriptions (e.g., Bloomberg Terminal, paid SAM.gov tiers).
-- **Simplified NLP:** The Keyword Density Algorithm (KDA) ignores semantic context (e.g., "NOT for semiconductors" vs "FOR semiconductors").
+## 1. Data Source constraints
+- **Synthetic Validation Data:** The public repository utilizes sanitized, synthetic datasets to demonstrate logic flow without exposing proprietary or classified feed subscriptions (e.g., Bloomberg Terminal).
+- **Production Requirement:** Live deployment requires active credentials for SAM.gov Data Bank (System for Award Management).
 
-## 2. Scalability Limits
-- **Single-Threaded Polling:** The `run()` loop is synchronous. Monitoring 10,000 sources would require asynchronous architecture (Celery/Redis).
-- **Rate Limiting:** Production APIs often impose rate limits (e.g., 60 requests/min) which the current prototype does not handle aggressively.
+## 2. Architectural Scope
+- **Reference Implementation:** The provided Python code is a synchronous, deterministic implementation designed for code auditability.
+- **Production Scaling:** A deployed National-Scale system would utilize the asynchronous `Celery` / `Redis` architecture described in `10_scalability_report.md`.
 
 ## 3. Semantic Disambiguation Challenges
 - **Keyword Ambiguity:** "Chip" can mean wood chips or silicon chips.
-- **Current Mitigation:** Implementation of "Negative Lookahead" filters (e.g., exclude "wood", "potato" from "chip" queries).
+- **Current Mitigation:** "Negative Lookahead" Regex filters.
 - **Future Mitigation:** Migration to Vector Embeddings (Phase 2) to capture semantic context.
-
-<!-- Refined by GovSignal Automation -->
