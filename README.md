@@ -1,5 +1,6 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18293591.svg)](https://doi.org/10.5281/zenodo.18293591)
 ![Status](https://img.shields.io/badge/Status-Research_Prototype-blue)
-![License](https://img.shields.io/badge/License-Apache_2.0-green)
+![License](https://img.shields.io/badge/License-Creative_Commons_4.0-green)
 
 # GovSignal-Connect (The Readiness Protocol)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18293591.svg)](https://doi.org/10.5281/zenodo.18293591)
