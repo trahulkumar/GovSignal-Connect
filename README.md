@@ -2,6 +2,7 @@
 ![License](https://img.shields.io/badge/License-Apache_2.0-green)
 
 # GovSignal-Connect (The Readiness Protocol)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18293591.svg)](https://doi.org/10.5281/zenodo.18293591)
 **Autonomous Procurement Signals for Legacy ERPs via Federal Data Feeds**
 
 > **Reference Implementation for the Technical White Paper:** *"The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains"* (2026).
@@ -124,14 +125,20 @@ The system follows a strict unidirectional data flow to ensure signal integrity:
 -   **Trigger:** SAM.gov lists a "DoD Solicitation" for "Electronic Warfare Readiness."
 -   **Action:** Immediate recommendation to increase stock levels for TWT Amplifiers.
 
-## 6. Citation
-
-Will be updated after the paper is published
-
-## 7. Documentation
+## 6. Documentation
 | Category | Document | Description |
 |---|---|---|
 | Core | [Problem Statement](research/01_problem_statement.md) | Academic definition of the inventory lag problem. |
 | Methods | [NLP Methodology](research/02_methodology_nlp.md) | Mathematical definition of the KDA scoring algorithm. |
 | Security | [Threat Model](research/12_threat_model.md) | Assessment of adversarial risks (poisoning, DoS). |
 | Sim Data | [Simulation Report](docs/Readiness_Protocol_Simulation_Report.md) | Full breakdown of the Monte Carlo analysis. |
+
+## 📄 Technical Report & Citation
+
+The architectural framework and simulation results for this system are detailed in our Technical Report, released via the Zenodo Open Science Repository.
+
+**Read the full report:** [The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains](https://doi.org/10.5281/zenodo.18293591)
+
+If you use this codebase in your research or deployment, please cite:
+
+> **Thatikonda, R. K., & Donepudi, S.** (2026). *The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains*. Zenodo. https://doi.org/10.5281/zenodo.18293591

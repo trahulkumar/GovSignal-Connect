@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated Technical Report."
+authors:
+  - family-names: "Thatikonda"
+    given-names: "Rahul Kumar"
+    orcid: "https://orcid.org/0009-0000-1234-7915"
+  - family-names: "Donepudi"
+    given-names: "Sucharitha"
+    orcid: "https://orcid.org/0009-0007-2012-3904"
+title: "GovSignal-Connect: Autonomous Procurement Signals for Legacy ERPs"
+version: 1.0.0
+doi: 10.5281/zenodo.18293591
+date-released: 2026-01-18
+url: "https://github.com/trahulkumar/GovSignal-Connect"
+preferred-citation:
+  type: report
+  authors:
+  - family-names: "Thatikonda"
+    given-names: "Rahul Kumar"
+  - family-names: "Donepudi"
+    given-names: "Sucharitha"
+  doi: "10.5281/zenodo.18293591"
+  journal: "Zenodo"
+  title: "The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains"
+  year: 2026
