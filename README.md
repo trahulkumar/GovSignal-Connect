@@ -124,7 +124,7 @@ See [SECURITY.md](docs/SECURITY.md) for details on:
 - **FedRAMP:** Deployment guidelines for High-Security enclaves.
 
 ## 📝 Citation
-If you use this reference implementation in your research, please cite the Validation Report.
+[1] R. K. Thatikonda and S. Donepudi, “The Readiness Protocol: Autonomous Capital Synchronization for Critical Infrastructure Supply Chains”, Critical Infrastructure Resilience Framework Technical Reports. Zenodo, Jan. 18, 2026. doi: 10.5281/zenodo.18293591.
 
 ## 📜 License
 MIT
