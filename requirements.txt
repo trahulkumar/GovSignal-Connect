@@ -1,0 +1,7 @@
+torch
+stable-baselines3
+langchain
+faiss-cpu
+gymnasium
+pandas
+streamlit
